@@ -1,0 +1,110 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.container{
+	width: 960px;
+	margin: auto;
+	margin-top: 44px;
+}
+
+.fleft{
+	float: left;
+}
+
+.fright{
+	float: right;
+}
+
+.clear{
+	clear: both;
+}
+
+h1{
+	font-size: 22px;
+}
+
+.addNew{
+	padding: 2px 9px;
+}
+
+table.list{
+	width: 100%;
+	margin-top: 33px;	
+}
+
+table.list th{
+	background: #1A68B8;
+	color: #FFFFFF;
+	padding: 9px;
+}
+
+table.list td{
+	padding: 9px;
+	text-align: center;
+}
+
+table.list tr{
+	background: #EEEEEE;
+}
+
+
+button{
+	padding: 2px 9px;
+}
+
+
+.modal{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0, 0.4);
+}
+
+.modalContainer{
+	width: 555px;
+	background: #FFFFFF;
+	margin: auto;
+	margin-top: 44px;
+}
+
+.modalHeading{
+	padding: 9px;
+	background: #06307C;
+	color: #FFFFFF;
+}
+
+.modalContent{
+	min-height: 333px;
+	padding: 44px;
+}
+
+.close{
+	background: #D73131;
+	padding: 3px 9px;
+	border: none;
+	color: #FFFFFF;
+}
+
+table.form input, table.form td{
+	padding: 6px;
+}
+.add{float: right;}
+
+.errorMessage{
+	background-color: #D73131;
+	color: #FFFFFF;
+	padding: 10px;
+	border-left: 3px solid red;
+}
+
+.successMessage{
+	background-color:green;
+	color: #FFFFFF;
+	padding: 10px;
+	border-left: 3px solid yellowgreen;
+}
+

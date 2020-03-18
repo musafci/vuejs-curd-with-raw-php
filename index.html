@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js CURD with Raw PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app">
+        <div class="container">
+            <h1>List of users</h1>
+            <button class="add" @click="showingAddModal = true">Add New</button>
+            <div class="clear"></div>
+            <hr>
+
+            <p class="errorMessage" v-if='errorMessage'>
+                {{ errorMessage }}
+            </p>
+
+            <p class="successMessage" v-if='successMessage'>
+                {{ successMessage }}
+            </p>
+            
+            <table class="list">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr v-for="user in users">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.mobile }}</td>
+                    <td><button @click="showingEditModal = true; selectUser(user)">Edit</button></td>
+                    <td><button @click="showingDeleteModal = true; selectUser(user)">Delete</button></td>
+                </tr>                
+            </table>
+
+        </div>
+    
+        <div class="modal" id="addModal" v-if="showingAddModal">
+            <div class="modalContainer">
+                <div class="modalHeading">
+                    <p class="fleft"> Add New User </p>
+                    <button class="fright close" @click="showingAddModal = false">
+                        X
+                    </button>
+                    <div class="clear">					
+                    </div>
+                </div>
+    
+                <div class="modalContent">
+                    <table class="form">
+                        <tr>
+                            <th>
+                                username
+                            </th>
+                            <th> : </th>
+                            <td>
+                                <input type="text" name="" v-model="newUser.username">
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <th>
+                                email
+                            </th>
+                            <th> : </th>
+                            <td>
+                                <input type="text" name="" v-model="newUser.email">
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <th>
+                                Mobile
+                            </th>
+                            <th> : </th>
+                            <td>
+                                <input type="text" name="" v-model="newUser.mobile">
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <th>
+                            </th>
+                            <th> </th>
+                            <td>
+                                <button @click="showingAddModal = false; saveUser();">Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>			
+            </div>
+        </div>
+    
+    
+        <div class="modal" id="editModal" v-if="showingEditModal">
+            <div class="modalContainer">
+                <div class="modalHeading">
+                    <p class="fleft"> Edit User </p>
+                    <button class="fright close" @click="showingEditModal = false">
+                        X
+                    </button>
+                    <div class="clear">					
+                    </div>
+                </div>
+    
+                <div class="modalContent">
+                    <table class="form">
+                        <tr>
+                            <th>
+                                username
+                            </th>
+                            <th> : </th>
+                            <td>
+                                <input type="text" name="" v-model="clickedUser.username">
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <th>
+                                email
+                            </th>
+                            <th> : </th>
+                            <td>
+                                <input type="text" name="" v-model="clickedUser.email">
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <th>
+                                Mobile
+                            </th>
+                            <th> : </th>
+                            <td>
+                                <input type="text" name="" v-model="clickedUser.mobile">
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <th>
+                            </th>
+                            <th> </th>
+                            <td>
+                                <button @click="showingEditModal = false; updateUser()">Update</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>			
+            </div>
+        </div>
+    
+    
+        <div class="modal" id="deleteModal" v-if="showingDeleteModal">
+            <div class="modalContainer">
+                <div class="modalHeading">
+                    <p class="fleft"> Are You Sure? </p>
+                    <button class="fright close" @click="showingDeleteModal = false">
+                        X
+                    </button>
+                    <div class="clear">					
+                    </div>
+                </div>
+    
+                <div class="modalContent">
+                    You are going to delete '{{ clickedUser.username }}' 
+                    <br><br><br>
+    
+                    <button @click="showingDeleteModal = false; deleteUser()">Yes</button>
+                    <button @click="showingDeleteModal = false">No</button>
+    
+                </div>			
+            </div>
+        </div>
+    </div>
+
+    <script src="axios.js"></script>
+    <script src="vue.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
